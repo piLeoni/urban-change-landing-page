@@ -7,8 +7,8 @@
           Help us recognize the chages that happened in cities!
         </div>
         <v-btn
-          large
           tile
+          large
           color="#54B0AE"
           @click="randomLink()"
           class="scl-button depressed mb-16 white--text"
@@ -93,7 +93,6 @@ export default {
   font-family: SF Compact Display;
   font-style: normal;
   font-weight: 300;
-  font-size: 24px;
   line-height: 24px;
   text-align: center;
   letter-spacing: 0.25em;
