@@ -1,7 +1,7 @@
 <template>
-  <v-container class="scl-container outliner" fluid fill-height >
+  <v-container class="scl-container outliner" fluid fill-height>
     <v-row class="outliner d-flex" align="center" justify="center">
-      <v-col  cols="10" sm="6" md="4" lg="3" class="outliner">
+      <v-col cols="10" sm="6" md="4" lg="3" class="outliner">
         <div class="scl-title mb-6">Urban<br />Changes</div>
         <div class="scl-subtitle mb-10">
           Help us recognize the chages that happened in cities!
@@ -39,21 +39,28 @@ export default {
   methods: {
     randomLink() {
       if (this.links) {
-        const randomizedLink = this.links[Math.floor(Math.random() * this.links.length)];
-        window.open(randomizedLink,  '_blank');
+        const randomizedLink =
+          this.links[Math.floor(Math.random() * this.links.length)];
+        window.open(randomizedLink, "_blank");
       }
     },
   },
 
   mounted() {
-    fetch(`${process.env.BASE_URL}links/links.csv`)
+    // fetch(`${process.env.BASE_URL}links/links.csv`)
+    fetch(
+      "https://raw.githubusercontent.com/brookefzy/urban-change/main/assets/surveylinks.csv"
+    )
       .then((resp) => resp.text())
       .then((links) => {
         this.links = parse(links, {
+          columns: true,
           skip_empty_lines: true,
-        }).map((line) => line[1]);
+        })
+         .map((element) =>element.link );
       })
       .catch((err) => console.log(err));
+
   },
 };
 </script>
@@ -63,20 +70,20 @@ export default {
 .outliner {
   /* outline: 1px solid red; */
 }
-.scl-container{
+.scl-container {
   display: relative;
-  position:fixed;
+  position: fixed;
   background: rgba(5, 8, 19, 1);
   color: white;
-  width:100vw;
-  height:100vh;
+  width: 100vw;
+  height: 100vh;
 }
 .scl-title {
   font-family: "SF Pro Display", sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size:  clamp(3.5rem,5vw, 5rem);
-  line-height: clamp(3.5rem,20vw, 5rem);
+  font-size: clamp(3.5rem, 5vw, 5rem);
+  line-height: clamp(3.5rem, 20vw, 5rem);
   letter-spacing: 0.2em;
   color: #ffffff;
 }
