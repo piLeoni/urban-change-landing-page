@@ -1,10 +1,10 @@
 <template>
   <v-container class="scl-container outliner" fluid fill-height>
     <v-row class="outliner d-flex" align="center" justify="center">
-      <v-col cols="10" sm="6" md="4" lg="3" class="outliner">
+      <v-col cols="10" sm="6" md="5" lg="4" class="outliner">
         <div class="scl-title mb-6">Urban<br />Changes</div>
         <div class="scl-subtitle mb-10">
-          Help us recognize the chages that happened in cities!
+          Help us recognize the changes that happened in cities!
         </div>
         <v-btn
           tile
@@ -15,10 +15,10 @@
           >LAUNCH THE SURVEY</v-btn
         >
         <div class="scl-team">
-          <b>Team: </b> <br />
-          Zhuangyuan Fan <br />
-          Kee Jang Moon <br />
-          Fan Zhang<br />
+          <div class="scl-team-title mb-5">
+            A project by MIT Senseable City Lab </div
+          >
+          <b>Team:</b> Zhuangyuan Fan, Kee Jang Moon, Fan Zhang, Pietro Leoni,
           Fabio Duarte
         </div>
       </v-col>
@@ -47,7 +47,6 @@ export default {
   },
 
   mounted() {
-    // fetch(`${process.env.BASE_URL}links/links.csv`)
     fetch(
       "https://raw.githubusercontent.com/brookefzy/urban-change/main/assets/surveylinks.csv"
     )
@@ -56,20 +55,16 @@ export default {
         this.links = parse(links, {
           columns: true,
           skip_empty_lines: true,
-        })
-         .map((element) =>element.link );
+        }).map((element) => element.link);
       })
       .catch((err) => console.log(err));
-
   },
 };
 </script>
 
 
 <style scoped>
-.outliner {
-  /* outline: 1px solid red; */
-}
+
 .scl-container {
   display: relative;
   position: fixed;
@@ -110,11 +105,13 @@ export default {
   font-weight: 300;
   line-height: 24px;
   font-size: 0.85rem;
-  /* identical to box height, or 100% */
-
   letter-spacing: 0.25em;
 }
 .scl-team b {
+  font-family: "SF Compact Display ", sans-serif;
+  /* font-size: 1.2rem; */
+}
+.scl-team-title {
   font-family: "SF Compact Display ", sans-serif;
   font-size: 1.2rem;
 }
