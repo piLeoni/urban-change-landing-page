@@ -39,8 +39,9 @@ export default {
   methods: {
     randomLink() {
       if (this.links) {
-        const randomizedLink =
-          this.links[Math.floor(Math.random() * this.links.length)];
+        const randomizedLink = this.links[
+          Math.floor(Math.random() * this.links.length)
+        ];
         window.open(randomizedLink, "_blank");
       }
     },
@@ -61,7 +62,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 
