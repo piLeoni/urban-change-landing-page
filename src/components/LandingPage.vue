@@ -4,7 +4,7 @@
       <v-col cols="10" sm="6" md="4" lg="3" class="outliner">
         <div class="scl-title mb-6">Urban<br />Changes</div>
         <div class="scl-subtitle mb-10">
-          Help us recognize the chages that happened in cities!
+          Help us recognize the changes that happened in cities!
         </div>
         <v-btn
           tile
@@ -15,11 +15,8 @@
           >LAUNCH THE SURVEY</v-btn
         >
         <div class="scl-team">
-          <b>Team: </b> <br />
-          Zhuangyuan Fan <br />
-          Kee Jang Moon <br />
-          Fan Zhang<br />
-          Fabio Duarte
+          <b>A project by MIT Senseable City Lab: </b> <br />
+          Zhuangyuan Fan, Kee Jang Moon, Fan Zhang, Pietro Leoni, Fabio Duarte
         </div>
       </v-col>
     </v-row>
@@ -39,8 +36,9 @@ export default {
   methods: {
     randomLink() {
       if (this.links) {
-        const randomizedLink =
-          this.links[Math.floor(Math.random() * this.links.length)];
+        const randomizedLink = this.links[
+          Math.floor(Math.random() * this.links.length)
+        ];
         window.open(randomizedLink, "_blank");
       }
     },
@@ -56,15 +54,12 @@ export default {
         this.links = parse(links, {
           columns: true,
           skip_empty_lines: true,
-        })
-         .map((element) =>element.link );
+        }).map((element) => element.link);
       })
       .catch((err) => console.log(err));
-
   },
 };
 </script>
-
 
 <style scoped>
 .outliner {
